@@ -23,3 +23,43 @@
 		color: var(--second-color);
 	}
 }
+
+@mixin text-button() {
+	& a {
+		font-size: 17px;
+		font-weight: 500;
+		line-height: 20px;
+		color: var(--second-color);
+		display: flex;
+		align-items: center;
+
+		& img {
+			margin-left: 13px;
+		}
+
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+}
+
+@mixin pre-title() {
+	font-size: 20px;
+	font-weight: 500;
+	line-height: 24px;
+	color: var(--footer-text-color);
+
+	& span {
+		color: var(--second-color);
+	}
+}
+
+@mixin question-title {
+	font-size: 36px;
+	font-weight: 700;
+	line-height: 43px;
+
+	& span {
+		color: var(--second-color);
+	}
+}

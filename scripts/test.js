@@ -11,6 +11,7 @@
 		passButtonElement: null,
 		progressBarElement: null,
 		userResult: [],
+		passArrow: null,
 		init() {
 			checkUserData()
 			const url = new URL(location.href)
@@ -47,6 +48,8 @@
 			this.prevButtonElement.onclick = this.move.bind(this, 'prev')
 			this.passButtonElement = document.getElementById('pass')
 			this.passButtonElement.onclick = this.move.bind(this, 'pass')
+
+			this.passArrow = document.getElementById('pass-img')
 
 			this.prepareProgressBar()
 			this.showQuestion()
@@ -111,6 +114,7 @@
 				answerInputElement.setAttribute('value', answer.id)
 				if (chosenOption && chosenOption.chosenAnswerId === answer.id) {
 					answerInputElement.setAttribute('checked', 'checked')
+					// this.isChecked = true
 				}
 
 				answerInputElement.onchange = function () {
@@ -129,8 +133,12 @@
 
 			if (chosenOption && chosenOption.chosenAnswerId) {
 				this.nextButtonElement.removeAttribute('disabled')
+				this.passButtonElement.classList.add('disabled')
+				this.passArrow.setAttribute('src', 'assets/images/small-arrow-gray.png')
 			} else {
 				this.nextButtonElement.setAttribute('disabled', 'disabled')
+				this.passButtonElement.classList.remove('disabled')
+				this.passArrow.setAttribute('src', 'assets/images/small-arrow.png')
 			}
 			if (this.currentQuestionIndex === this.quiz.questions.length) {
 				this.nextButtonElement.innerText = 'Завершить'
@@ -145,6 +153,8 @@
 		},
 		chooseAnswer() {
 			this.nextButtonElement.removeAttribute('disabled')
+			this.passButtonElement.classList.add('disabled')
+			this.passArrow.setAttribute('src', 'assets/images/small-arrow-gray.png')
 		},
 		move(action) {
 			const activeQuestion = this.quiz.questions[this.currentQuestionIndex - 1]
@@ -225,7 +235,14 @@
 
 				if (result) {
 					location.href =
-						'result.html?score=' + result.score + '&total=' + result.total
+						'result.html?' +
+						url.searchParams +
+						'&userResult=' +
+						JSON.stringify(this.userResult) +
+						'&score=' +
+						result.score +
+						'&total=' +
+						result.total
 				}
 			} else {
 				location.href = 'index.html'

@@ -2,10 +2,7 @@
 	padding: 20px 0 56px 0;
 
 	&__pre-title {
-		font-size: 20px;
-		font-weight: 500;
-		line-height: 24px;
-		color: var(--footer-text-color);
+		@include pre-title;
 	}
 
 	&__progress-bar {
@@ -17,13 +14,7 @@
 	}
 
 	&__question-title {
-		font-size: 36px;
-		font-weight: 700;
-		line-height: 43px;
-
-		& span {
-			color: var(--second-color);
-		}
+		@include question-title;
 	}
 
 	&__question-options {
@@ -78,21 +69,12 @@
 		justify-content: flex-end;
 		margin-top: 10px;
 
-		& a {
-			font-size: 17px;
-			font-weight: 500;
-			line-height: 20px;
-			color: var(--second-color);
-			display: flex;
-			align-items: center;
+		@include text-button;
 
-			& img {
-				margin-left: 13px;
-			}
-
-			&:hover {
-				text-decoration: underline;
-			}
+		& a.disabled {
+			color: var(--footer-text-color);
+			pointer-events: none;
+			cursor: default;
 		}
 	}
 }
