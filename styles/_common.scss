@@ -1,0 +1,46 @@
+* {
+	scroll-behavior: smooth;
+}
+
+body {
+	font-family: 'MuseoSansCyrl', sans-serif;
+	color: var(--text-color);
+}
+
+.container {
+	@include container;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:focus {
+	transition: background-color 0s 600000s, color 0s 600000s;
+}
+
+input[type='radio'] {
+	appearance: none;
+	-webkit-appearance: none;
+	width: 20px;
+	height: 20px;
+	border: 3px solid var(--second-color);
+	border-radius: 50%;
+	margin: 0 13px 0 0;
+	transform: translateY(2px);
+	cursor: pointer;
+
+	display: grid;
+	place-content: center;
+
+	&::before {
+		content: '';
+		width: 10px;
+		height: 10px;
+		border-radius: 50%;
+		box-shadow: inset 10px 10px var(--second-color);
+		transition: 0.2s ease transform;
+		transform: scale(0);
+	}
+
+	&:checked::before {
+		transform: scale(1);
+	}
+}

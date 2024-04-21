@@ -1,0 +1,25 @@
+@mixin container() {
+	max-width: 1200px;
+	margin: 0 auto;
+	box-sizing: border-box;
+}
+
+@mixin common-title() {
+	font-size: 48px;
+	font-weight: 700;
+	line-height: 58px;
+
+	& span {
+		color: var(--second-color);
+	}
+}
+
+@mixin big-title() {
+	font-size: 54px;
+	font-weight: 700;
+	line-height: 65px;
+
+	& span {
+		color: var(--second-color);
+	}
+}

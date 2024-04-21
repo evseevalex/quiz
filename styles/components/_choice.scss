@@ -1,0 +1,32 @@
+.choice {
+	padding: 180px 0 227px 0;
+
+	& .container {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	&__content {
+		max-width: 583px;
+	}
+
+	&__title {
+		@include common-title;
+	}
+
+	&__description {
+		margin-top: 40px;
+		font-size: 18px;
+		font-weight: 500;
+		line-height: 22px;
+	}
+
+	&__options {
+		margin-top: 60px;
+	}
+
+	&__option {
+		width: 583px;
+	}
+}

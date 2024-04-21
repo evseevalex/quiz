@@ -13,12 +13,6 @@ function buildStyles() {
 		.pipe(gulp.dest('./dist/css/'))
 }
 
-function buildLibs() {
-	return gulp
-		.src(['./scripts/jquery.mask.min.js', './scripts/wow.min.js'])
-		.pipe(gulp.dest('./dist/js/'))
-}
-
 function buildScripts() {
 	return gulp
 		.src('./scripts/index.js')
@@ -35,7 +29,7 @@ function buildScripts() {
 }
 
 exports.buildStyles = buildStyles
-exports.default = gulp.parallel(buildStyles, buildScripts, buildLibs)
+exports.default = gulp.parallel(buildStyles, buildScripts)
 exports.watch = function () {
 	gulp.watch('./styles/**/*.scss', gulp.series(buildStyles))
 	gulp.watch('./scripts/**/*.js', gulp.series(buildScripts))
