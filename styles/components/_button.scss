@@ -14,6 +14,11 @@
 		background-color: var(--color-button-hover);
 	}
 
+	&:disabled {
+		background-color: #e2dfe7;
+		cursor: not-allowed;
+	}
+
 	&--transparent {
 		background: transparent;
 		color: var(--second-color);
@@ -22,6 +27,12 @@
 		&:hover {
 			background-color: var(--second-color);
 			color: white;
+		}
+
+		&:disabled {
+			background: transparent;
+			color: #e2dfe7;
+			border: 1px solid #e2dfe7;
 		}
 	}
 }
