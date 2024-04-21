@@ -68,12 +68,16 @@
 		},
 		processForm() {
 			if (this.validateForm()) {
-				let paramString = ''
+				let formData = []
 				this.fields.forEach(item => {
-					paramString +=
-						(!paramString ? '?' : '&') + item.name + '=' + item.element.value
+					formData.push({
+						name: item.name,
+						value: item.element.value,
+					})
 				})
-				location.href = 'choice.html' + paramString
+				sessionStorage.setItem('formData', JSON.stringify(formData))
+
+				location.href = 'choice.html'
 			}
 		},
 	}

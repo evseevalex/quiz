@@ -14,8 +14,8 @@
 		passArrow: null,
 		init() {
 			checkUserData()
-			const url = new URL(location.href)
-			const testId = url.searchParams.get('id')
+
+			const testId = sessionStorage.getItem('testId')
 
 			if (testId) {
 				const xhr = new XMLHttpRequest()
@@ -208,10 +208,11 @@
 		},
 		complete() {
 			const url = new URL(location.href)
-			const id = url.searchParams.get('id')
-			const name = url.searchParams.get('name')
-			const lastName = url.searchParams.get('lastName')
-			const email = url.searchParams.get('email')
+			const id = sessionStorage.getItem('testId')
+			const data = JSON.parse(sessionStorage.getItem('formData'))
+			const name = data[0].value
+			const lastName = data[1].value
+			const email = data[2].value
 
 			const xhr = new XMLHttpRequest()
 			xhr.open('POST', 'https://testologia.ru/pass-quiz?id=' + id, false)
@@ -234,15 +235,10 @@
 				}
 
 				if (result) {
-					location.href =
-						'result.html?' +
-						url.searchParams +
-						'&userResult=' +
-						JSON.stringify(this.userResult) +
-						'&score=' +
-						result.score +
-						'&total=' +
-						result.total
+					sessionStorage.setItem('userResult', JSON.stringify(this.userResult))
+					sessionStorage.setItem('score', result.score)
+					sessionStorage.setItem('total', result.total)
+					location.href = 'result.html'
 				}
 			} else {
 				location.href = 'index.html'

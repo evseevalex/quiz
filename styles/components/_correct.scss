@@ -49,9 +49,10 @@
 		line-height: 24px;
 		margin-bottom: 20px;
 		display: flex;
+		cursor: default;
 
-		& label {
-			cursor: pointer;
+		& input {
+			cursor: default;
 		}
 	}
 

@@ -8,17 +8,17 @@
 		correctQuestionsElement: null,
 		correctBackButtonElement: null,
 		init() {
-			const url = new URL(location.href)
-			const id = url.searchParams.get('id')
+			const id = sessionStorage.getItem('testId')
+			const data = JSON.parse(sessionStorage.getItem('formData'))
 			this.user = {
-				name: url.searchParams.get('name'),
-				lastName: url.searchParams.get('lastName'),
-				email: url.searchParams.get('email'),
+				name: data[0].value,
+				lastName: data[1].value,
+				email: data[2].value,
 			}
-			this.userAnswers = JSON.parse(url.searchParams.get('userResult'))
+			this.userAnswers = JSON.parse(sessionStorage.getItem('userResult'))
 			this.correctBackButtonElement = document.getElementById('back')
 			this.correctBackButtonElement.onclick = function () {
-				location.href = 'result.html' + location.search
+				location.href = 'result.html'
 			}
 
 			if (id) {
